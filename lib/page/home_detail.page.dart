@@ -16,7 +16,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Future Demo Page'),
+          title: const Text('Home Details Page'),
         ),
         body: FutureBuilder<NewsfeedModle>(
             future: NewsfeedRepo().getData(),
