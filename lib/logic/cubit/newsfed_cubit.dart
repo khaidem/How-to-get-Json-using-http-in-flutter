@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:day8/model/newsfeeds.model.dart';
 import 'package:day8/repo/newsfee_repo.dart';
@@ -8,23 +6,20 @@ import 'package:equatable/equatable.dart';
 part 'newsfed_state.dart';
 
 class NewsfeedCubit extends Cubit<NewsfeedState> {
-  NewsfeedCubit() : super(const NewsfeedState(status: Status.initial));
+  NewsfeedCubit({required this.repo})
+      : super(const NewsfeedState(status: Status.initial));
 
-  getNewsFeedData() async {
-    log("message");
+  final NewsfeedRepo repo;
+
+  Future<void> getNewsFeedData() async {
     if (isLoading) return;
 
-    emit(const NewsfeedState(status: Status.initial));
+    emit(const NewsfeedState(status: Status.loading));
     try {
-      final data = await NewsfeedRepo().getData();
-
-      //log(data.runtimeType.toString());
-
-      emit(const NewsfeedState(
-        status: Status.loaded,
-      ));
+      final data = await repo.getData();
+      emit(NewsfeedState(status: Status.loaded, newsfeedModle: data));
     } catch (e) {
-      emit(const NewsfeedState(status: Status.error));
+      emit(NewsfeedState(status: Status.error, error: e.toString()));
     }
   }
 
