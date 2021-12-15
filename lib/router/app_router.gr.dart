@@ -41,23 +41,27 @@ class AppRouter extends _i2.RootStackRouter {
       ];
 }
 
-/// generated route for [_i1.AuthScreen]
+/// generated route for
+/// [_i1.AuthScreen]
 class AuthScreen extends _i2.PageRouteInfo<void> {
-  const AuthScreen() : super(name, path: '/');
+  const AuthScreen() : super(AuthScreen.name, path: '/');
 
   static const String name = 'AuthScreen';
 }
 
-/// generated route for [_i1.HomePage]
+/// generated route for
+/// [_i1.HomePage]
 class HomeRoute extends _i2.PageRouteInfo<void> {
-  const HomeRoute() : super(name, path: '/home-page');
+  const HomeRoute() : super(HomeRoute.name, path: '/home-page');
 
   static const String name = 'HomeRoute';
 }
 
-/// generated route for [_i1.HomeDetailPage]
+/// generated route for
+/// [_i1.HomeDetailPage]
 class HomeDetailRoute extends _i2.PageRouteInfo<void> {
-  const HomeDetailRoute() : super(name, path: '/home-detail-page');
+  const HomeDetailRoute()
+      : super(HomeDetailRoute.name, path: '/home-detail-page');
 
   static const String name = 'HomeDetailRoute';
 }
