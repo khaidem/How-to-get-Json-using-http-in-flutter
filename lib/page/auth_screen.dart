@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
+import '../widget/authentication_service.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -8,7 +10,7 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _State extends State<AuthScreen> {
-  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
@@ -35,9 +37,9 @@ class _State extends State<AuthScreen> {
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Email',
-                    hintText: 'Enter valid email id as abc@gmail.com'),
+                  border: OutlineInputBorder(),
+                  labelText: 'Email',
+                ),
               ),
             ),
             const Padding(
@@ -47,16 +49,15 @@ class _State extends State<AuthScreen> {
               child: TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Password',
-                    hintText: 'Enter secure password'),
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                ),
               ),
             ),
-            FlatButton(
+            ElevatedButton(
               onPressed: () {},
               child: const Text(
                 'Forgot Password',
-                style: TextStyle(color: Colors.blue, fontSize: 15),
               ),
             ),
             Container(
@@ -64,10 +65,15 @@ class _State extends State<AuthScreen> {
               width: 250,
               decoration: BoxDecoration(
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-              child: FlatButton(
-                onPressed: () {},
+              child: ElevatedButton(
+                onPressed: () {
+                  context.read<AuthenticationService>().signIn(
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
+                },
                 child: const Text(
-                  'Login',
+                  'Sign In',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),

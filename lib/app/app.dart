@@ -1,6 +1,9 @@
 import 'package:day8/logic/cubit/newsfed_cubit.dart';
 import 'package:day8/repo/newsfee_repo.dart';
 import 'package:day8/router/router.dart';
+import 'package:day8/widget/authentication_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,9 +18,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => NewsfeedCubit(repo: newsfeedRepo),
-        )
+        // create: (context) => AuthenticationService(FirebaseAuth.instance)),
+
+        // BlocProvider(
+        //   create: (context) => NewsfeedCubit(repo: newsfeedRepo),
+
+        // )
       ],
       child: MaterialApp.router(
         routerDelegate: appRouter.delegate(),
